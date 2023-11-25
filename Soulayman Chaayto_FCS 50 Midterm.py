@@ -1,4 +1,27 @@
-def mainMenu():
+tabs_order = []   #this list will contain the keys of the opened tabs which will help us to keep track of their order.
+tab = {}          #this dictionary will contain the title, the url, the html content and the nested tabs(if there is any) for each opened tab.
+
+
+def openTab(tabs_order,tab):
+  while True:             #while loop will break if the title is not empty
+    title = input("Enter the title of the tab: ")
+    if not title:
+      continue
+    else:
+      break
+  while True:               #while loop will break if the url is not empty
+    url = input("Enter the URL of the tab: ")
+    if not url:
+      continue
+    else:
+      break
+  tab.update({title : url})        #add the title,url pair to the dictionary
+  tabs_order.append(title)      #add the title to the end of list
+
+
+
+
+def mainMenu(tabs_order,tab):
   choice=-99 # dummy value
   while choice !=9:
     print("Welcome to the browser, please choose one of the options below:")
@@ -16,7 +39,7 @@ def mainMenu():
 
     if choice == 1:
       print("Adding a new tab...")
-      openTab()
+      openTab(tabs_order,tab)
     elif choice == 2:
       print("Closing a tab...")
       closetab()
@@ -41,6 +64,9 @@ def mainMenu():
     elif choice == 9:
       print("Program is closing, bye bye.")
     else:
-      print("ivalid input")
+      print("invalid input")
 
-mainMenu()
+mainMenu(tabs_order,tab)
+#the last two lines are just for me, will be removed in future commits.
+print("tabs_order: ", tabs_order)
+print("tab: ", tab.items())
