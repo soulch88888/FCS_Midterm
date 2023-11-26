@@ -63,7 +63,7 @@ def sortAllTabs(list1):      #this function will sort the titles of the tabs sav
   border = 1
   while border < len(list1):
     current = border
-    while current > 0 and list1[current].lower() < list1[current-1].lower():
+    while current > 0 and list1[current].title.lower() < list1[current-1].title.lower():
       list1[current], list1[current-1] = list1[current-1], list1[current]
       current -= 1
     border += 1
@@ -72,7 +72,7 @@ def sortAllTabs(list1):      #this function will sort the titles of the tabs sav
 
 
 
-def mainMenu(tabs_order, tabs):
+def mainMenu(tabs_order):
   choice=-99 # dummy value
   while choice !=9:
     print("Welcome to the browser, please choose one of the options below:")
