@@ -1,3 +1,4 @@
+import json
 from urllib.request import urlopen  #this line allows us to use the urlopen() method (got this from google)
 tabs_order = []   #this list will contain the tabs(list of dictionaries) which will help us to keep track of their order.
 #the dictionary will contain the title, the url, the html content and the nested tabs(if there is any) for each opened tab.
@@ -102,7 +103,17 @@ def sortAllTabs(list1):      #this function will sort the tabs saved in the orde
     border += 1
 
 
+def saveAllTabs(tabs_order):
+  while True:
+    file_path = input("Enter the path of the file: ")
+    if not file_path:
+      continue
+    else:
+      break
+  tabs_json = json.dumps(tabs_order, indent=4)
 
+
+# def importTabs():
 
 
 def mainMenu(tabs_order):
@@ -141,7 +152,7 @@ def mainMenu(tabs_order):
       sortAllTabs(tabs_order)
     elif choice == 7:
       print("Saving all tabs...")
-      saveAllTabs()
+      saveAllTabs(tabs_order)
     elif choice == 8:
       print("Importing tabs...")
       importTabs()
