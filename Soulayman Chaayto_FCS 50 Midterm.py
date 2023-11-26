@@ -93,7 +93,7 @@ def openNestedTabs(tabs_order):
       print("added the nested tabs ")
   tabs_order[int(Index)]["nested tabs"] = list_of_nested_tabs
 
-#O(n^2) n being the length of the tabs_order list
+#O(n^2) n being the length of the list1
 def sortAllTabs(list1):      #this function will sort the tabs saved in the order list alphabetically by comparing their titles, using insertion sort.
   border = 1
   while border < len(list1):
@@ -103,7 +103,7 @@ def sortAllTabs(list1):      #this function will sort the tabs saved in the orde
       current -= 1
     border += 1
 
-
+#O(n+m), n being the length of the tabs_order list and m being the number of time the user inputs an empty path
 def saveAllTabs(tabs_order):
   while True:                           #just to make sure the user doesn't input an empty path
     file_path = input("Enter the path of the file: ")
