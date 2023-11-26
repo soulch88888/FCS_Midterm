@@ -3,7 +3,7 @@ from urllib.request import urlopen  #this line allows us to use the urlopen() me
 tabs_order = []   #this list will contain the tabs(list of dictionaries) which will help us to keep track of their order.
 #the dictionary will contain the title, the url, the html content and the nested tabs(if there is any) for each opened tab.
 
-#runtime O(n) n being the number times the user inputs an empty strings
+# O(n) n being the number times the user inputs an empty strings
 def openTab(tabs_order):
   while True:           #while loop will break if the title is not empty
     title = input("Enter the title of the tab: ")
@@ -21,7 +21,7 @@ def openTab(tabs_order):
           "url":  url}       #create a new dictionary that represents the tab
   tabs_order.append(tab)      #add the tab to the end of list
 
-
+#O(n), n being the length of the tabs_order list
 def closetab(tabs_order):
   if len(tabs_order) > 0:
     tabIndex = input("Enter the index of the tab to be removed: ")
