@@ -122,9 +122,10 @@ def importTabs(tabs_order):
       continue
     else:
       break
-  tabs_file = open(file_path, "r")                #the following code is obtained from w3schools, this line opens the file
-  imported_tabs = json.loads(tabs_file.read())
-  tabs_order.extend(imported_tabs)
+  tabs_file = open(file_path, "r")                #the following code is obtained from w3schools, this line opens the file, and since we used "r" we will be reading from this file
+  imported_tabs = json.loads(tabs_file.read())    #this line does 2 things:1_ it reads the data from the file using the .read() method to read the data
+                                                  #2_ it transforms the data read from json to python using the .loads() method
+  tabs_order.extend(imported_tabs)                
 
 def mainMenu(tabs_order):
   choice=-99 # dummy value
