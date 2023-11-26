@@ -1,4 +1,4 @@
-import json
+import json   #this will allow us to use the .dumps() method
 from urllib.request import urlopen  #this line allows us to use the urlopen() method (got this from google)
 tabs_order = []   #this list will contain the tabs(list of dictionaries) which will help us to keep track of their order.
 #the dictionary will contain the title, the url, the html content and the nested tabs(if there is any) for each opened tab.
@@ -104,16 +104,16 @@ def sortAllTabs(list1):      #this function will sort the tabs saved in the orde
 
 
 def saveAllTabs(tabs_order):
-  while True:
+  while True:                           #just to make sure the user doesn't input an empty path
     file_path = input("Enter the path of the file: ")
     if not file_path:
       continue
     else:
       break
-  tabs_json = json.dumps(tabs_order, indent=4)
-  tabs_file = open(file_path, "w")
-  tabs_file.write(tabs_json)
-  tabs_file.close()
+  tabs_json = json.dumps(tabs_order, indent=4)      #the following code is obtained from w3schools, this line transform the data from python to json
+  tabs_file = open(file_path, "w")                  #this line opens the file that has the path provided in file_path , the "w" means that we will overwrite any existing content in the file
+  tabs_file.write(tabs_json)                        #this line inserts the data in tabs_json into the file
+  tabs_file.close()                                 #it is a good habit to close the file after opening
 
 # def importTabs():
 
