@@ -64,14 +64,32 @@ def displayAllTabs(tabs_order):
     for tab in tabs_order:
       print("the title of the tab: ", tab["title"])
       if "nested tabs" in tab.keys():
-          print("nested tabs inside of ", tab["title"], " are: ", tab["nested tabs"]["title"])
+          print("nested tabs inside of ", tab["title"], " are: ", tab["nested tabs"])
       else:
           print("there is no nested tabs inside: ", tab["title"])
   else:
       print("There isn't any opened tabs yet.")
 
 
-
+def openNestedTabs(tabs_order):
+  while True:             #while loop will break if the index is not empty
+    Index = input("Enter the index of the tab: ")
+    if not Index or int(Index) > len(tabs_order)-1:
+      continue
+    else:
+      break
+  list_of_nested_tabs =[]     #we will store all the nested tabs in this list, then we will add it to the tab in the original list
+  choice = -99    #dummy value
+  while choice != 2:
+    print("enter ")
+    print("1. To insert a nested tab to: ", tabs_order[int(Index)]["title"])
+    print("2. To stop")
+    choice = int(input())
+    if choice == 1:
+      openTab(list_of_nested_tabs)
+    else:
+      print("added the nested tabs ")
+  tabs_order[int(Index)]["nested tabs"] = list_of_nested_tabs
 
 
 def sortAllTabs(list1):      #this function will sort the tabs saved in the order list alphabetically by comparing their titles, using insertion sort.
@@ -101,7 +119,7 @@ def mainMenu(tabs_order):
     print("8. Import Tabs")
     print("9. Exit")
 
-    choice=int(input())
+    choice = int(input())
 
     if choice == 1:
       print("Adding a new tab...")
@@ -117,7 +135,7 @@ def mainMenu(tabs_order):
       displayAllTabs(tabs_order)
     elif choice == 5:
       print("Opening nested tabs...")
-      openNestedTabs()
+      openNestedTabs(tabs_order)
     elif choice == 6:
       print("Sorting All tabs...")
       sortAllTabs(tabs_order)
