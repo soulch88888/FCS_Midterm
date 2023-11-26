@@ -74,24 +74,27 @@ def displayAllTabs(tabs_order):
 
 # O(a*b+c), a being the length of the tabs_order list, b being the number of times the user doesnt input 2, and c being the number of times the user inputs an empty string
 def openNestedTabs(tabs_order):
-  while True:             #while loop will break if the index is not empty
-    Index = input("Enter the index of the tab: ")
-    if not Index or int(Index) > len(tabs_order)-1:
-      continue
-    else:
-      break
-  list_of_nested_tabs =[]     #we will store all the nested tabs in this list, then we will add it to the tab in the original list
-  choice = -99    #dummy value
-  while choice != 2:
-    print("enter ")
-    print("1. To insert a nested tab to: ", tabs_order[int(Index)]["title"])
-    print("2. To stop")
-    choice = int(input())
-    if choice == 1:
-      openTab(list_of_nested_tabs)
-    else:
-      print("added the nested tabs ")
-  tabs_order[int(Index)]["nested tabs"] = list_of_nested_tabs
+  if len(tabs_order) > 0:
+    while True:             #while loop will break if the index is not empty
+      Index = input("Enter the index of the tab: ")
+      if not Index or int(Index) > len(tabs_order)-1:
+        continue
+      else:
+        break
+    list_of_nested_tabs =[]     #we will store all the nested tabs in this list, then we will add it to the tab in the original list
+    choice = -99    #dummy value
+    while choice != 2:
+      print("enter ")
+      print("1. To insert a nested tab to: ", tabs_order[int(Index)]["title"])
+      print("2. To stop")
+      choice = int(input())
+      if choice == 1:
+        openTab(list_of_nested_tabs)
+      else:
+        print("added the nested tabs ")
+    tabs_order[int(Index)]["nested tabs"] = list_of_nested_tabs
+  else:
+      print("There isn't any opened tabs yet.")
 
 #O(n^2) n being the length of the list1
 def sortAllTabs(list1):      #this function will sort the tabs saved in the order list alphabetically by comparing their titles, using insertion sort.
