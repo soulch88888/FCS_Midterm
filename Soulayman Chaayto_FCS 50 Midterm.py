@@ -116,6 +116,8 @@ def saveAllTabs(tabs_order):
   tabs_file.write(tabs_json)                        #this line inserts the data in tabs_json into the file
   tabs_file.close()                                 #it is a good habit to close the file after opening
 
+
+#O(n+m) n being the number of times the user inputs an empty path, and m being the length of the data imported
 def importTabs(tabs_order):
   while True:                           #just to make sure the user doesn't input an empty path
     file_path = input("Enter the path of the file: ")
