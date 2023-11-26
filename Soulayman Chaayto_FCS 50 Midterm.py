@@ -3,9 +3,9 @@ from urllib.request import urlopen  #this line allows us to use the urlopen() me
 tabs_order = []   #this list will contain the tabs(list of dictionaries) which will help us to keep track of their order.
 #the dictionary will contain the title, the url, the html content and the nested tabs(if there is any) for each opened tab.
 
-
+#runtime O(n) n being the number times the user inputs an empty strings
 def openTab(tabs_order):
-  while True:             #while loop will break if the title is not empty
+  while True:           #while loop will break if the title is not empty
     title = input("Enter the title of the tab: ")
     if not title:
       continue
