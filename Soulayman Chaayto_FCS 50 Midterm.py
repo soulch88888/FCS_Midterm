@@ -25,10 +25,10 @@ def closetab(tabs_order):
   if len(tabs_order) > 0:
     tabIndex = input("Enter the index of the tab to be removed: ")
     if not tabIndex:                                #this condition is true if the input string is empty
-      print("deleted the tab with the title: ", tabs_order[-1])
+      print("deleted the tab with the title: ", tabs_order[-1]["title"])
       tabs_order.pop()
     elif int(tabIndex) >= 0 and int(tabIndex) < len(tabs_order):
-      print("deleted the tab with the title: ", tabs_order[int(tabIndex)].title)
+      print("deleted the tab with the title: ", tabs_order[int(tabIndex)]["title"])
       tabs_order.pop(int(tabIndex))        #this method will remove the tab stored in the order list
     else:
       print("invalid input")
@@ -40,15 +40,15 @@ def switchTab(tabs_order):
   if len(tabs_order) > 0:
     tabIndex = input("Enter the index of the tab you want to switch to: ")
     if not tabIndex:                                #this condition is true if the input string is empty
-      print("Switching to the last opened tab with the title: ", tabs_order[-1].title)
-      url = tabs_order[-1].url                         #this block of code is optained through google, and modified to fit my needs. we are taking the title of the last opened tab and the corresponding url from the dictionary,
+      print("Switching to the last opened tab with the title: ", tabs_order[-1]["title"])
+      url = tabs_order[-1]["url"]                         #this block of code is optained through google, and modified to fit my needs. we are taking the title of the last opened tab and the corresponding url from the dictionary,
       page = urlopen(url)                                 #and then we are opening the url using urlopen() wich will return an HTTPResponse object, and saving it in the variable page.
       page_html_bytes = page.read()                       #After that we use the .read() method on page which will return the html content as a sequence of bytes, we will store it in page_html_bytes.
       html_content = page_html_bytes.decode("utf-8")      #Finally we are decoding the sequence of bytes to a string that represents the html content, and storing it in html_content
-      print("the html content for this tab is: ",html_content)
+      print("the html content for this tab is: ", html_content)
     elif int(tabIndex) >= 0 and int(tabIndex) < len(tabs_order):
-      print("Switching to the tab with the title: ", tabs_order[int(tabIndex)].title)
-      url = tabs_order[int(tabIndex)].url                         #this block does the same thing as the one above, except this time we are not taking the last opened tab,
+      print("Switching to the tab with the title: ", tabs_order[int(tabIndex)]["title"])
+      url = tabs_order[int(tabIndex)]["url"]                         #this block does the same thing as the one above, except this time we are not taking the last opened tab,
       page = urlopen(url)                                #instead we are taking the index of the tab from the user,
       page_html_bytes = page.read()                      #and then we perform the same operations on the tab having this index.
       html_content = page_html_bytes.decode("utf-8")
@@ -63,7 +63,7 @@ def sortAllTabs(list1):      #this function will sort the titles of the tabs sav
   border = 1
   while border < len(list1):
     current = border
-    while current > 0 and list1[current].title.lower() < list1[current-1].title.lower():
+    while current > 0 and list1[current]["title"].lower() < list1[current-1]["title"].lower():
       list1[current], list1[current-1] = list1[current-1], list1[current]
       current -= 1
     border += 1
@@ -117,8 +117,7 @@ def mainMenu(tabs_order):
     else:
       print("invalid input")
 
-mainMenu(tabs_order,tabs)
+mainMenu(tabs_order)
 #the last few lines are just for me, will be removed in future commits.
 print("tabs_order: ", tabs_order)
-print("tab: ", tabs.items())
 print(len(tabs_order))
