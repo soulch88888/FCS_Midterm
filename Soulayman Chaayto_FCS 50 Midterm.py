@@ -36,7 +36,20 @@ def closetab(tabs_order,tabs):
     print("There isn't any opened tabs yet.")
 
 
-def mainMenu(tabs_order,tabs):
+def sortAllTabs(list1):      #this function will sort the titles of the tabs saved in the order list alphabetically
+  border = 1
+  while border < len(list1):
+    current = border
+    while current > 0 and list1[current].lower() < list1[current-1].lower():
+      list1[current], list1[current-1] = list1[current-1], list1[current]
+      current -= 1
+    border += 1
+
+
+
+
+
+def mainMenu(tabs_order, tabs):
   choice=-99 # dummy value
   while choice !=9:
     print("Welcome to the browser, please choose one of the options below:")
@@ -69,7 +82,7 @@ def mainMenu(tabs_order,tabs):
       openNestedTabs()
     elif choice == 6:
       print("Sorting All tabs...")
-      sortAllTabs()
+      sortAllTabs(tabs_order)
     elif choice == 7:
       print("Saving all tabs...")
       saveAllTabs()
@@ -82,7 +95,7 @@ def mainMenu(tabs_order,tabs):
       print("invalid input")
 
 mainMenu(tabs_order,tabs)
-#the last two lines are just for me, will be removed in future commits.
+#the last few lines are just for me, will be removed in future commits.
 print("tabs_order: ", tabs_order)
 print("tab: ", tabs.items())
 print(len(tabs_order))
