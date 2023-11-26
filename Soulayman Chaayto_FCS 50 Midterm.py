@@ -122,7 +122,9 @@ def importTabs(tabs_order):
       continue
     else:
       break
-    
+  tabs_file = open(file_path, "r")
+  imported_tabs = json.loads(tabs_file.read())
+  tabs_order .extend(imported_tabs)
 
 def mainMenu(tabs_order):
   choice=-99 # dummy value
