@@ -59,7 +59,7 @@ def switchTab(tabs_order):
   else:
     print("There isn't any opened tabs yet.")
 
-
+# O(n*m), n being the length of the tabs_order list and m being the length of the nested tabs list
 def displayAllTabs(tabs_order):
   if len(tabs_order) > 0:
     for tab in tabs_order:
