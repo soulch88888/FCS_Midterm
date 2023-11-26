@@ -125,7 +125,7 @@ def importTabs(tabs_order):
   tabs_file = open(file_path, "r")                #the following code is obtained from w3schools, this line opens the file, and since we used "r" we will be reading from this file
   imported_tabs = json.loads(tabs_file.read())    #this line does 2 things:1_ it reads the data from the file using the .read() method to read the data
                                                   #2_ it transforms the data read from json to python using the .loads() method
-  tabs_order.extend(imported_tabs)                
+  tabs_order.extend(imported_tabs)                #this line takes the list (imported_tabs) and adds it to the end of tabs_order list
 
 def mainMenu(tabs_order):
   choice=-99 # dummy value
@@ -173,6 +173,3 @@ def mainMenu(tabs_order):
       print("invalid input")
 
 mainMenu(tabs_order)
-#the last few lines are just for me, will be removed in future commits.
-print("tabs_order: ", tabs_order)
-print(len(tabs_order))
