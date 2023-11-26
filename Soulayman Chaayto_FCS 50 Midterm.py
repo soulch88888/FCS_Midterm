@@ -36,7 +36,7 @@ def closetab(tabs_order):
   else:
     print("There isn't any opened tabs yet.")
 
-
+# O(n), n being the length of the tabs_order list
 def switchTab(tabs_order):
   if len(tabs_order) > 0:
     tabIndex = input("Enter the index of the tab you want to switch to: ")
