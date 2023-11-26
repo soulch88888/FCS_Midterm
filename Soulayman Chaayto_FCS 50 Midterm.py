@@ -72,6 +72,7 @@ def displayAllTabs(tabs_order):
       print("There isn't any opened tabs yet.")
 
 
+# O(a*b+c), a being the length of the tabs_order list, b being the number of times the user doesnt input 2, and c being the number of times the user inputs an empty string
 def openNestedTabs(tabs_order):
   while True:             #while loop will break if the index is not empty
     Index = input("Enter the index of the tab: ")
