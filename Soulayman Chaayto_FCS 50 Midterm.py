@@ -122,7 +122,7 @@ def importTabs(tabs_order):
       continue
     else:
       break
-  tabs_file = open(file_path, "r")
+  tabs_file = open(file_path, "r")                #the following code is obtained from w3schools, this line opens the file
   imported_tabs = json.loads(tabs_file.read())
   tabs_order.extend(imported_tabs)
 
