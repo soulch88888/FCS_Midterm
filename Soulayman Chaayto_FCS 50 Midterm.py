@@ -111,7 +111,9 @@ def saveAllTabs(tabs_order):
     else:
       break
   tabs_json = json.dumps(tabs_order, indent=4)
-
+  tabs_file = open(file_path, "w")
+  tabs_file.write(tabs_json)
+  tabs_file.close()
 
 # def importTabs():
 
