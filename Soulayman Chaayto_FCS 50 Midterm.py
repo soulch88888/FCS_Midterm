@@ -124,7 +124,7 @@ def importTabs(tabs_order):
       break
   tabs_file = open(file_path, "r")
   imported_tabs = json.loads(tabs_file.read())
-  tabs_order .extend(imported_tabs)
+  tabs_order.extend(imported_tabs)
 
 def mainMenu(tabs_order):
   choice=-99 # dummy value
@@ -165,7 +165,7 @@ def mainMenu(tabs_order):
       saveAllTabs(tabs_order)
     elif choice == 8:
       print("Importing tabs...")
-      importTabs()
+      importTabs(tabs_order)
     elif choice == 9:
       print("Program is closing, bye bye.")
     else:
