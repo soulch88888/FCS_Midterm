@@ -1,3 +1,4 @@
+from urllib.request import urlopen  #this line allows us to use the urlopen() method (got this from google)
 tabs_order = []   #this list will contain the keys(titles) of the opened tabs which will help us to keep track of their order.
 tabs= {}          #this dictionary will contain the title, the url, the html content and the nested tabs(if there is any) for each opened tab.
 
@@ -36,15 +37,23 @@ def closetab(tabs_order,tabs):
     print("There isn't any opened tabs yet.")
 
 
-def switchTab():
+def switchTab(tabs_order, tabs):
   if len(tabs_order) > 0:
     tabIndex = input("Enter the index of the tab you want to switch to: ")
     if not tabIndex:                                #this condition is true if the input string is empty
       print("Switching to the last opened tab with the title: ", tabs_order[-1])
-
+      url = tabs[tabs_order[-1]]                          #this block of code is optained through google, and modified to fit my needs. we are taking the title of the last opened tab and the corresponding url from the dictionary,
+      page = urlopen(url)                                 #and then we are opening the url using urlopen() wich will return an HTTPResponse object, and saving it in the variable page.
+      page_html_bytes = page.read()                       #After that we use the .read() method on page which will return the html content as a sequence of bytes, we will store it in page_html_bytes.
+      html_content = page_html_bytes.decode("utf-8")      #Finally we are decoding the sequence of bytes to a string that represents the html content, and storing it in html_content
+      print("the html content for this tab is: ",html_content)
     elif int(tabIndex) >= 0 and int(tabIndex) < len(tabs_order):
       print("Switching to the tab with the title: ", tabs_order[int(tabIndex)])
-   
+      url = tabs[tabs_order[int(tabIndex)]]                          #this block does the same thing as the one above, except this time we are not taking the last opened tab,
+      page = urlopen(url)                                #instead we are taking the index of the tab from the user,
+      page_html_bytes = page.read()                      #and then we perform the same operations on the tab having this index.
+      html_content = page_html_bytes.decode("utf-8")
+      print("the html content for this tab is: ", html_content)
     else:
       print("invalid input")
   else:
@@ -88,7 +97,7 @@ def mainMenu(tabs_order, tabs):
       closetab(tabs_order,tabs)
     elif choice == 3:
       print("Switching tabs...")
-      switchTab()
+      switchTab(tabs_order, tabs)
     elif choice == 4:
       print("Displaying all tabs...")
       displayAllTabs()
