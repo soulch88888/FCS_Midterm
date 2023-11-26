@@ -1,9 +1,9 @@
 from urllib.request import urlopen  #this line allows us to use the urlopen() method (got this from google)
 tabs_order = []   #this list will contain the keys(titles) of the opened tabs which will help us to keep track of their order.
-tabs= {}          #this dictionary will contain the title, the url, the html content and the nested tabs(if there is any) for each opened tab.
+ #this dictionary will contain the title, the url, the html content and the nested tabs(if there is any) for each opened tab.
 
 
-def openTab(tabs_order,tabs):
+def openTab(tabs_order):
   while True:             #while loop will break if the title is not empty
     title = input("Enter the title of the tab: ")
     if not title:
@@ -16,11 +16,12 @@ def openTab(tabs_order,tabs):
       continue
     else:
       break
-  tabs.update({title : url})        #add the title,url pair to the dictionary
-  tabs_order.append(title)      #add the title to the end of list
+  tab = {"title": title,
+          "url":  url}       #add the title,url pair to the dictionary
+  tabs_order.append(tab)      #add the title to the end of list
 
 
-def closetab(tabs_order,tabs):
+def closetab(tabs_order):
   if len(tabs_order) > 0:
     tabIndex = input("Enter the index of the tab to be removed: ")
     if not tabIndex:                                #this condition is true if the input string is empty
@@ -91,13 +92,13 @@ def mainMenu(tabs_order, tabs):
 
     if choice == 1:
       print("Adding a new tab...")
-      openTab(tabs_order,tabs)
+      openTab(tabs_order)
     elif choice == 2:
       print("Closing a tab...")
-      closetab(tabs_order,tabs)
+      closetab(tabs_order)
     elif choice == 3:
       print("Switching tabs...")
-      switchTab(tabs_order, tabs)
+      switchTab(tabs_order)
     elif choice == 4:
       print("Displaying all tabs...")
       displayAllTabs()
