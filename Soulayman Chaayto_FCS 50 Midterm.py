@@ -176,3 +176,4 @@ mainMenu(tabs_order)
 
 #references:
 #https://www.w3schools.com/python/
+#https://realpython.com/python-web-scraping-practical-introduction/
