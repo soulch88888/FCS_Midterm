@@ -1,4 +1,4 @@
-tabs_order = []   #this list will contain the keys of the opened tabs which will help us to keep track of their order.
+tabs_order = []   #this list will contain the keys(titles) of the opened tabs which will help us to keep track of their order.
 tabs= {}          #this dictionary will contain the title, the url, the html content and the nested tabs(if there is any) for each opened tab.
 
 
@@ -30,6 +30,21 @@ def closetab(tabs_order,tabs):
       print("deleted the tab with the title: ", tabs_order[int(tabIndex)])
       tabs.pop(tabs_order[int(tabIndex)])     #this method will take the key saved in the tabs_order list at the index provided by the user input and will remove the {key,value} pair from the dictionary
       tabs_order.pop(int(tabIndex))        #this method will remove the title stored in the order list
+    else:
+      print("invalid input")
+  else:
+    print("There isn't any opened tabs yet.")
+
+
+def switchTab():
+  if len(tabs_order) > 0:
+    tabIndex = input("Enter the index of the tab you want to switch to: ")
+    if not tabIndex:                                #this condition is true if the input string is empty
+      print("Switching to the last opened tab with the title: ", tabs_order[-1])
+
+    elif int(tabIndex) >= 0 and int(tabIndex) < len(tabs_order):
+      print("Switching to the tab with the title: ", tabs_order[int(tabIndex)])
+   
     else:
       print("invalid input")
   else:
